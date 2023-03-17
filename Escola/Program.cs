@@ -1,4 +1,6 @@
 using Escola.Data;
+using Escola.Interfaces;
+using Escola.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Escola
@@ -20,6 +22,8 @@ namespace Escola
                 .AddDbContext<EscolaDBContext>(
                     options => options.UseSqlServer("Data Source=DESKTOP-U1KVKKM\\SQLEXPRESS;Initial Catalog=ESCOLA;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False")
                     );
+
+            builder.Services.AddScoped<IAluno, AlunoServices>();
 
             var app = builder.Build();
 
